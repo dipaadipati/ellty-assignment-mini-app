@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "jest"
+    "test": "jest",
+    "compose:up": "docker-compose up -d --build",
+    "compose:down": "docker-compose down"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.81.1",

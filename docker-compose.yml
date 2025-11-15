@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    container_name: number-tree-web
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      # Environment variables for Next.js
+      NODE_ENV: development
+      DATABASE_URL: postgres://postgres:postgres@db:5432/numbertree
+      JWT_SECRET: supersecretkey123
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+  db:
+    image: postgres:15
+    container_name: number-tree-db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: numbertree
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
