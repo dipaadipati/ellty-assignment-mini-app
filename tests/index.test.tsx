@@ -9,7 +9,7 @@ describe("HomePage", () => {
   it("renders title", async () => {
     fetchMock.mockResponseOnce(JSON.stringify([]));
     await act(async () => {
-        render(<HomePage />);
+      render(<HomePage />);
     });
     expect(screen.getByText("📊 Number Communication Tree")).toBeInTheDocument();
   });
@@ -17,7 +17,7 @@ describe("HomePage", () => {
   it("can input start number", async () => {
     fetchMock.mockResponseOnce(JSON.stringify([]));
     await act(async () => {
-        render(<HomePage />);
+      render(<HomePage />);
     });
     const inputs = screen.getAllByRole("spinbutton");
     fireEvent.change(inputs[0], { target: { value: "10" } });
